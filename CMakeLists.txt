@@ -49,3 +49,12 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 else()
   target_compile_options(example_app PRIVATE /W4)
 endif()
+
+
+####################################################################################################
+# tests
+####################################################################################################
+install(TARGETS example_app)
+
+enable_testing()
+add_test(NAME example_app COMMAND example_app)
