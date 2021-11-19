@@ -18,12 +18,12 @@ Simple strong typed =I mean no pointers= ecs system. It's inspired by [[https://
    so you mostly would do insertion with them.
  - Component: any POD containing data otherwise you are abusing =ECS=.
  - Archetype: components-store, it's a vector of =SortedTuples=. Sorted tuples are =std::tuple=
-   with types rearranged descending order
-   to reduce memory difference when using tuple vs struct.
+   with types rearranged in descending order to reduce memory difference when
+   using tuple vs struct.
    this class supports adding new entity--components that Archetype contains--,
    checking for components existence, and removing/adding a component
-   **this method creates a new Archetype and they are intended to be used before
-   ECS creation as we cannot change ECS type**. 
+   =this method creates a new Archetype and they are intended to be used before
+   ECS creation as we cannot change ECS type=. 
  - Archetypes Manager: Class =ECS= contains a sorted tuple of Archetypes and support add
    new entity--creating new one--, along with running over all entities or all entities in a
    certain Archetype.
