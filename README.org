@@ -1,21 +1,32 @@
 #+OPTIONS: toc:3          (only include two levels in TOC)
 * ECS: Minimal ECS system
 
-Simple strong typed `I mean no pointers` ecs system used to explore ECS. It's inspired by [fast-ecs](https://github.com/andrenho/fast-ecs).
+Simple strong typed =I mean no pointers= ecs system. It's inspired by [[https://github.com/andrenho/fast-ecs][fast-ecs]].
 
 ** Definitions
 
  - Entity: is an id number.
  - Component: data storage POD.
  - System: any logic/fuction/memfun that operate on these components.
- - Archetype: a collection of entities that have the same components, we would call it components-store.
+ - Archetype: a collection of entities that have the same components, we would call it
+   components-store.
  - Archetypes Manager: a collection of Archetypes.
 
 ** Implementation
- - Entity: struct storing a number with a pointer to components-store to do useful stuff with it and it isn't store in the system, so you mostly would do insertion with them.
- - Component: any POD containing data otherwise you are abusing ECS.
- - Archetype: components-store, it's a vector of `sorted-tuples`. Sorted tuples are std::tuple with types rearranged descending order to reduce memory difference when using tuple vs struct. this class supports adding new entity-components that Archetype contain-, checking for components existence, and removing/adding a component **this method creates a new Archetype and they are intended to be used before ECS creation as we cannot change ECS type**. 
- - Archetypes Manager: Class `ECS` contains a sorted tuple of Archetypes and support add new entity-creating new one-, along with running over all entities or all entities in a certain Archetype.
+ - Entity: struct storing a number with a pointer to components-store to do useful stuff with it
+   and it isn't store in the system,
+   so you mostly would do insertion with them.
+ - Component: any POD containing data otherwise you are abusing =ECS=.
+ - Archetype: components-store, it's a vector of =SortedTuples=. Sorted tuples are =std::tuple=
+   with types rearranged descending order
+   to reduce memory difference when using tuple vs struct.
+   this class supports adding new entity--components that Archetype contains--,
+   checking for components existence, and removing/adding a component
+   **this method creates a new Archetype and they are intended to be used before
+   ECS creation as we cannot change ECS type**. 
+ - Archetypes Manager: Class =ECS= contains a sorted tuple of Archetypes and support add
+   new entity--creating new one--, along with running over all entities or all entities in a
+   certain Archetype.
 
 * example:
 #+begin_src c++
@@ -73,4 +84,5 @@ int main(int, char*[]) {
 * Copyright
 
 See LICENSE file
+
 Copyright (c) 2021 Islam Omar (io1131@fayoum.edu.eg)
