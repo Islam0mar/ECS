@@ -1,6 +1,5 @@
 #pragma once
 #include <cstdint>
-#include <experimental/source_location>
 #include <string_view>
 #include <tuple>
 #include <type_traits>
@@ -149,14 +148,6 @@ constexpr auto Hash32TypeName() {
 }
 
 }  // namespace murmur3
-
-namespace counter {
-constexpr auto Generate(const std::experimental::source_location& location =
-                            std::experimental::source_location::current()) {
-  return location.line();
-}
-
-}  // namespace counter
 
 // tuple utilities to filter on its contained types
 namespace tuple {

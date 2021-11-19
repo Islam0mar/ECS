@@ -14,8 +14,7 @@ using SizeT = std::uint_fast32_t;
 
 template <typename Archetype, typename ECS>
 struct Entity {
-  constexpr Entity(SizeT n = utils::counter::Generate(), ECS* ecs = nullptr)
-      : n_(n), ecs_(ecs) {}
+  constexpr Entity(SizeT n, ECS* ecs = nullptr) : n_(n), ecs_(ecs) {}
 
   template <typename T>
   static constexpr bool Has() {
