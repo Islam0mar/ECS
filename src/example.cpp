@@ -38,7 +38,7 @@ int main(int, char*[]) {
     std::cout << position.x << std::endl;
     std::cout << position.y << std::endl;
     std::cout << direction.angle << std::endl;
-    e.template Set<Position>(128.0231f, 1231.0f / 0.0f);
+    e.template Set<Position>(128.0231f, 1231.0f);
   });
 
   // loop over all entities
