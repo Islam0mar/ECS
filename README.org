@@ -69,6 +69,7 @@ int main(int, char*[]) {
 ** Prerequisites
  - CMake 3.0 or newer
  - working C++17 compiler
+ - Compiler defines =__PRETTY_FUNCTION__= as constexpr 
 
 #+begin_src bash
     mkdir build
