@@ -345,7 +345,7 @@ constexpr auto RemoveFactory(Tuple t) {
 // sorted tuple to reduce memory
 template <typename... Ts>
 struct SortedTuple {
-  constexpr SortedTuple() { SortedTuple(std::tuple<Ts...>()); }
+  constexpr SortedTuple() : SortedTuple(std::tuple<Ts...>()) {}
   constexpr SortedTuple(const std::tuple<Ts...>& tuple)
       : tuple_(MakeSortedTuple(std::make_index_sequence<sizeof...(Ts)>{},
                                tuple)) {}
