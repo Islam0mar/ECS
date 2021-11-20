@@ -23,16 +23,16 @@ using Render = ecs::Archetype<Position, Mesh>;
 // example
 int main(int, char*[]) {
   auto world = ecs::ECS<Physics, Render>();
-  auto e1 = world.template Add<Physics>();  // new entity from physics Archetype
+  auto e1 = world.Add<Physics>();  // new entity from physics Archetype
 
   e1.Set<Position>(1.4f, 1.134f);
 
-  auto e2 = world.template Add<Render>();
+  auto e2 = world.Add<Render>();
   e2.Set<Position>(200.24f, 100.0f);
   e2.Set<Mesh>("ECS Rendering!");
 
   // loop over physics entities
-  world.template Run<Physics>([](auto& e) {
+  world.Run<Physics>([](auto& e) {
     auto position = e.template Get<Position>();
     auto direction = e.template Get<Direction>();
     std::cout << position.x << std::endl;
@@ -42,7 +42,7 @@ int main(int, char*[]) {
   });
 
   // loop over all entities
-  world.template Run([](auto e) {
+  world.Run([](auto e) {
     auto position = e.template Get<Position>();
     std::cout << position.x << std::endl;
     std::cout << position.y << std::endl;

@@ -18,13 +18,13 @@ jobs:
         config:
         - {
             name: "Windows Latest MSVC", artifact: "Windows-MSVC.7z",
-            os: windows-2022,
+            os: windows-latest,
             cc: "cl", cxx: "cl",
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
           }
         - {
             name: "Windows Latest MinGW", artifact: "Windows-MinGW.7z",
-            os: windows-2022,
+            os: windows-latest,
             cc: "gcc", cxx: "g++"
           }
         - {
@@ -40,6 +40,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
+    - name: Set up Cygwin
+      uses: egor-tensin/setup-cygwin@v3
+      with:
+       platform: x64
+       packages: cmake gcc-g++
 
     - name: Download Ninja and CMake
       shell: cmake -P {0}
